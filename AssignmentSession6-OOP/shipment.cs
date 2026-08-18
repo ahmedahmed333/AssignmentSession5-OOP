@@ -6,51 +6,118 @@ namespace AssignmentSession6_OOP
 {
     public struct Shipment
     {
-
-        // Question 02 (a) : 
-        // 1- dirct data (do data hiding) : Fields are marked as public , breaking encapsulation by allowing external code to access and modify internal data directly.
-        //2- Lack of Data Validation : There is no control over assigned values.
-        //3- Loss of Flexibility : Futrue business rules ot calc cannot be added later without breaking existing code that relises on these fields.
-
-        // Question 02 (b) : 
-        //  private fields
+        private string trackingCode;
+        private string description;
         private double weight;
         private decimal deliveryFee;
-        // Flexibility with validation (Auto-Property allows future modification without breaking code)
-        public string Description { get; set; }
-        //Data Validation
+        // Constructors
+        public Shipment(string trackingCode)
+        {
+            TrackingCode = trackingCode;
+            Description = "Unknown";
+            Weight = 1;
+            DeliveryFee = 50;
+            Destination = new DeliveryAddress();
+        }
+        public Shipment(string trackingCode, string description, double weight, decimal deliveryFee, DeliveryAddress destination)
+        {
+            TrackingCode = trackingCode;
+            Description = description;
+            Weight = weight;
+            DeliveryFee = deliveryFee;
+            Destination = destination;
+        }
+
+        // proporties
+        public string TrackingCode
+        {
+
+            get
+            {
+
+                return trackingCode;
+            }
+
+
+            private set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    trackingCode = value;
+                }
+            }
+        }
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    description = value;
+                }
+            }
+        }
+
+
         public double Weight
         {
             get { return weight; }
 
             set
             {
-                if (value >= 0)
+                if (value > 0)
                 {
                     weight = value;
                 }
-                else
-                {
-                    Console.WriteLine("Weight cannot be negative");
-                }
+
             }
         }
         public decimal DeliveryFee
         {
 
             get { return deliveryFee; }
-            set
+            private set
             {
-                if (value >= 0)
+                if (value > 0)
                 {
                     deliveryFee = value;
 
                 }
-                else
-                {
-                    Console.WriteLine("Delivery Fee cannot be negative.");
-                }
+
             }
         }
+        public DeliveryAddress Destination { get; set; }
+        public decimal EstimatedCost
+        {
+            get
+            {
+
+                return DeliveryFee + (decimal)(Weight * 5);
+            }
+        }
+
+        // methods
+        public void UpdateDeliveryFee(decimal newFee)
+        {
+            if (newFee > 0)
+            {
+                DeliveryFee = newFee;
+            }
+        }
+        public void PrintShipment()
+        {
+            Console.WriteLine($"Tracking Code: {TrackingCode}");
+            Console.WriteLine($"Description:   {Description}");
+            Console.WriteLine($"Weight:        {Weight}");
+            Console.WriteLine($"Delivery Fee:  {DeliveryFee}");
+            Console.WriteLine($"Destination:   {Destination.GetFullAddress()}");
+            Console.WriteLine($"Total Cost:    {EstimatedCost}");
+        }
+
     }
 }
