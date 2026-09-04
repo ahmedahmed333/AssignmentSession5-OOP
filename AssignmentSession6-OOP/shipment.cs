@@ -4,11 +4,11 @@ using System.Text;
 
 namespace AssignmentSession6_OOP
 {
-    public struct Shipment
+    public class Shipment
     {
         private string trackingCode;
         private string description;
-        private double weight;
+        private decimal weight;
         private decimal deliveryFee;
         // Constructors
         public Shipment(string trackingCode)
@@ -19,7 +19,7 @@ namespace AssignmentSession6_OOP
             DeliveryFee = 50;
             Destination = new DeliveryAddress();
         }
-        public Shipment(string trackingCode, string description, double weight, decimal deliveryFee, DeliveryAddress destination)
+        public Shipment(string trackingCode, string description, decimal weight, decimal deliveryFee, DeliveryAddress destination)
         {
             TrackingCode = trackingCode;
             Description = description;
@@ -64,7 +64,7 @@ namespace AssignmentSession6_OOP
         }
 
 
-        public double Weight
+        public decimal Weight
         {
             get { return weight; }
 
@@ -92,12 +92,12 @@ namespace AssignmentSession6_OOP
             }
         }
         public DeliveryAddress Destination { get; set; }
-        public decimal EstimatedCost
+        public virtual decimal  EstimatedCost
         {
             get
             {
 
-                return DeliveryFee + (decimal)(Weight * 5);
+                return DeliveryFee + (Weight * 5);
             }
         }
 
@@ -109,7 +109,7 @@ namespace AssignmentSession6_OOP
                 DeliveryFee = newFee;
             }
         }
-        public void PrintShipment()
+        public virtual void PrintShipment()
         {
             Console.WriteLine($"Tracking Code: {TrackingCode}");
             Console.WriteLine($"Description:   {Description}");

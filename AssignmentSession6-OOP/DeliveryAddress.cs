@@ -15,7 +15,7 @@ namespace AssignmentSession6_OOP
             Street = street;
             BuildingNumber = buildingNumber;
         }
-        public string GetFullAddress()
+        public string GetFullAddress()  
         {
             return $"{BuildingNumber}-{Street}-{City}";
         }
