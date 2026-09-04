@@ -163,208 +163,231 @@ namespace AssignmentSession6_OOP
             //5.Create one InternationalShipment.
             //6.Read all shipment data from the user.
 
-            DeliveryCenter center = new DeliveryCenter();
+            //            DeliveryCenter center = new DeliveryCenter();
 
-            Console.Write("Enter Center Name: ");
+            //            Console.Write("Enter Center Name: ");
 
-            center.centerName = Console.ReadLine();
+            //            center.centerName = Console.ReadLine();
 
-            Console.WriteLine("\nEnter Standard Shipment Data:");
+            //            Console.WriteLine("\nEnter Standard Shipment Data:");
 
-            //StandardShipment
+            //            //StandardShipment
 
-            Console.Write("Tracking Code:");
+            //            Console.Write("Tracking Code:");
 
-            string StandardTrackingCode = Console.ReadLine();
+            //            string StandardTrackingCode = Console.ReadLine();
 
-            Console.Write("Description:");
+            //            Console.Write("Description:");
 
-            string StandardDescription = Console.ReadLine();
+            //            string StandardDescription = Console.ReadLine();
 
-            Console.Write("Weight:");
+            //            Console.Write("Weight:");
 
-            decimal StandardWeight = decimal.Parse(Console.ReadLine());
+            //            decimal StandardWeight = decimal.Parse(Console.ReadLine());
 
-            Console.Write("Delivery Fee:");
+            //            Console.Write("Delivery Fee:");
 
-            decimal StandardDeliveryFee = decimal.Parse(Console.ReadLine());
+            //            decimal StandardDeliveryFee = decimal.Parse(Console.ReadLine());
 
-            Console.Write("City: ");
-            string standardCity = Console.ReadLine();
+            //            Console.Write("City: ");
+            //            string standardCity = Console.ReadLine();
 
-            Console.Write("Street: ");
-            string standardStreet = Console.ReadLine();
+            //            Console.Write("Street: ");
+            //            string standardStreet = Console.ReadLine();
 
-            Console.Write("Building Number: ");
-            int standardBuildingNumber = int.Parse(Console.ReadLine());
+            //            Console.Write("Building Number: ");
+            //            int standardBuildingNumber = int.Parse(Console.ReadLine());
 
-            DeliveryAddress standardAddress = new DeliveryAddress
-            {
-                City = standardCity,
-                Street = standardStreet,
-                BuildingNumber = standardBuildingNumber
-            };
-            StandardShipment standard = new StandardShipment(
-                StandardTrackingCode, StandardDescription, StandardWeight, StandardDeliveryFee, standardAddress
-                );
+            //            DeliveryAddress standardAddress = new DeliveryAddress
+            //            {
+            //                City = standardCity,
+            //                Street = standardStreet,
+            //                BuildingNumber = standardBuildingNumber
+            //            };
+            //            StandardShipment standard = new StandardShipment(
+            //                StandardTrackingCode, StandardDescription, StandardWeight, StandardDeliveryFee, standardAddress
+            //                );
 
 
-            //ExpressShipment
+            //            //ExpressShipment
 
-            Console.WriteLine("\nEnter Express Shipment Data:");
+            //            Console.WriteLine("\nEnter Express Shipment Data:");
 
-            Console.Write("Tracking Code:");
+            //            Console.Write("Tracking Code:");
 
-            string expressTrackingCode = Console.ReadLine();
+            //            string expressTrackingCode = Console.ReadLine();
 
-            Console.Write("Description:");
+            //            Console.Write("Description:");
 
-            string expressDescription = Console.ReadLine();
+            //            string expressDescription = Console.ReadLine();
 
-            Console.Write("Weight:");
+            //            Console.Write("Weight:");
 
-            decimal expressWeight = decimal.Parse(Console.ReadLine());
+            //            decimal expressWeight = decimal.Parse(Console.ReadLine());
 
-            Console.Write("Delivery Fee:");
+            //            Console.Write("Delivery Fee:");
 
-            decimal expressDeliveryFee = decimal.Parse(Console.ReadLine());
+            //            decimal expressDeliveryFee = decimal.Parse(Console.ReadLine());
 
-            Console.Write("Extra Fee:");
+            //            Console.Write("Extra Fee:");
 
-            decimal expressExtraFee = decimal.Parse(Console.ReadLine());
+            //            decimal expressExtraFee = decimal.Parse(Console.ReadLine());
 
 
-            Console.Write("City: ");
-            string expressCity = Console.ReadLine();
+            //            Console.Write("City: ");
+            //            string expressCity = Console.ReadLine();
 
-            Console.Write("Street: ");
-            string expressStreet = Console.ReadLine();
+            //            Console.Write("Street: ");
+            //            string expressStreet = Console.ReadLine();
 
-            Console.Write("Building Number: ");
-            int expressBuildingNumber = int.Parse(Console.ReadLine());
+            //            Console.Write("Building Number: ");
+            //            int expressBuildingNumber = int.Parse(Console.ReadLine());
 
-            DeliveryAddress expressAddress = new DeliveryAddress
-            {
-                City = expressCity,
-                Street = expressStreet,
-                BuildingNumber = expressBuildingNumber
-            };
-            ExpressShipment express = new ExpressShipment(
-    expressTrackingCode,
-    expressDescription,
-    expressWeight,
-    expressDeliveryFee,
-    expressAddress,
-    expressExtraFee
-);
+            //            DeliveryAddress expressAddress = new DeliveryAddress
+            //            {
+            //                City = expressCity,
+            //                Street = expressStreet,
+            //                BuildingNumber = expressBuildingNumber
+            //            };
+            //            ExpressShipment express = new ExpressShipment(
+            //    expressTrackingCode,
+            //    expressDescription,
+            //    expressWeight,
+            //    expressDeliveryFee,
+            //    expressAddress,
+            //    expressExtraFee
+            //);
 
 
-            //InternationalShipment
+            //            //InternationalShipment
 
-            Console.WriteLine("\nEnter International Shipment Data:");
+            //            Console.WriteLine("\nEnter International Shipment Data:");
 
-            Console.Write("Tracking Code:");
+            //            Console.Write("Tracking Code:");
 
-            string internationalTrackingCode = Console.ReadLine();
+            //            string internationalTrackingCode = Console.ReadLine();
 
-            Console.Write("Description:");
+            //            Console.Write("Description:");
 
-            string internationalDescription = Console.ReadLine();
+            //            string internationalDescription = Console.ReadLine();
 
-            Console.Write("Weight:");
+            //            Console.Write("Weight:");
 
-            decimal internationalWeight = decimal.Parse(Console.ReadLine());
+            //            decimal internationalWeight = decimal.Parse(Console.ReadLine());
 
-            Console.Write("Delivery Fee:");
+            //            Console.Write("Delivery Fee:");
 
-            decimal internationalDeliveryFee = decimal.Parse(Console.ReadLine());
+            //            decimal internationalDeliveryFee = decimal.Parse(Console.ReadLine());
 
-            Console.Write("destinationCountry:");
+            //            Console.Write("destinationCountry:");
 
-            string internationalDestinationCountry = Console.ReadLine();
+            //            string internationalDestinationCountry = Console.ReadLine();
 
-            Console.Write("Customs Fee:");
+            //            Console.Write("Customs Fee:");
 
-            decimal internationalCustomsFee = decimal.Parse(Console.ReadLine());
+            //            decimal internationalCustomsFee = decimal.Parse(Console.ReadLine());
 
 
-            Console.Write("City: ");
-            string internationalCity = Console.ReadLine();
+            //            Console.Write("City: ");
+            //            string internationalCity = Console.ReadLine();
 
-            Console.Write("Street: ");
-            string internationalStreet = Console.ReadLine();
+            //            Console.Write("Street: ");
+            //            string internationalStreet = Console.ReadLine();
 
-            Console.Write("Building Number: ");
-            int internationalBuildingNumber = int.Parse(Console.ReadLine());
+            //            Console.Write("Building Number: ");
+            //            int internationalBuildingNumber = int.Parse(Console.ReadLine());
 
-            DeliveryAddress internationalAddress = new DeliveryAddress
-            {
-                City = internationalCity,
-                Street = internationalStreet,
-                BuildingNumber = internationalBuildingNumber
-            };
-            InternationalShipment international = new InternationalShipment(
-    internationalTrackingCode,
-    internationalDescription,
-    internationalWeight,
-    internationalDeliveryFee,
-    internationalAddress,
-    internationalDestinationCountry,
-    internationalCustomsFee
-);
-            //7. Add the shipments to the delivery center.
-            center.AddShipment(standard);
-            Console.WriteLine("Shipment Added Successfully.");
+            //            DeliveryAddress internationalAddress = new DeliveryAddress
+            //            {
+            //                City = internationalCity,
+            //                Street = internationalStreet,
+            //                BuildingNumber = internationalBuildingNumber
+            //            };
+            //            InternationalShipment international = new InternationalShipment(
+            //    internationalTrackingCode,
+            //    internationalDescription,
+            //    internationalWeight,
+            //    internationalDeliveryFee,
+            //    internationalAddress,
+            //    internationalDestinationCountry,
+            //    internationalCustomsFee
+            //);
+            //            //7. Add the shipments to the delivery center.
+            //            center.AddShipment(standard);
+            //            Console.WriteLine("Shipment Added Successfully.");
 
-            center.AddShipment(express);
-            Console.WriteLine("Shipment Added Successfully.");
+            //            center.AddShipment(express);
+            //            Console.WriteLine("Shipment Added Successfully.");
 
-            center.AddShipment(international);
-            Console.WriteLine("Shipment Added Successfully.\n");
+            //            center.AddShipment(international);
+            //            Console.WriteLine("Shipment Added Successfully.\n");
 
-            //8. Print all shipments.
+            //            //8. Print all shipments.
 
-            center.PrintAllShipments();
+            //            center.PrintAllShipments();
 
-            //9. Search for a shipment using the existing tracking code indexer.
+            //            //9. Search for a shipment using the existing tracking code indexer.
 
-            Console.Write("\nEnter Tracking Code to Search: ");
-            string searchCode = Console.ReadLine();
-            Shipment searchShipment = center[searchCode];
+            //            Console.Write("\nEnter Tracking Code to Search: ");
+            //            string searchCode = Console.ReadLine();
+            //            Shipment searchShipment = center[searchCode];
 
-            if (searchShipment != null)
-            {
-                Console.WriteLine("\nShipment Found:");
-                searchShipment.PrintShipment();
-            }
-            else
-            {
-                Console.WriteLine("Shipment Not Found.");
-            }
+            //            if (searchShipment != null)
+            //            {
+            //                Console.WriteLine("\nShipment Found:");
+            //                searchShipment.PrintShipment();
+            //            }
+            //            else
+            //            {
+            //                Console.WriteLine("Shipment Not Found.");
+            //            }
 
-            //10. Remove one shipment using its tracking code.
+            //            //10. Remove one shipment using its tracking code.
 
-            Console.Write("\nEnter Tracking Code to Remove: ");
+            //            Console.Write("\nEnter Tracking Code to Remove: ");
 
-            string removeCode = Console.ReadLine();
+            //            string removeCode = Console.ReadLine();
 
-            bool removed = center.RemoveShipment(removeCode);
+            //            bool removed = center.RemoveShipment(removeCode);
 
-            if (removed)
-            {
-                Console.WriteLine("Shipment removed successfully.");
-            }
-            else
-            {
-                Console.WriteLine("Shipment not found.");
-            }
+            //            if (removed)
+            //            {
+            //                Console.WriteLine("Shipment removed successfully.");
+            //            }
+            //            else
+            //            {
+            //                Console.WriteLine("Shipment not found.");
+            //            }
 
-            //11. Print the remaining shipments.
+            //            //11. Print the remaining shipments.
 
-            Console.WriteLine("\nRemaining Shipments:");
-            center.PrintAllShipments();
+            //            Console.WriteLine("\nRemaining Shipments:");
+            //            center.PrintAllShipments();
 
             #endregion
+
+            #region Part 01 : Theoretical Questions /  Question 1 (OOP3)
+            //Q1
+
+            // (a): Method overloading occurs when multiple methods have the same name ut different prameteter lists (order/count/type) , it is resolved at compile time
+            //       Method overriing occurs then derived class provides a new implemenation for vitual or abstract method inherited from a base class, it is resolved at runtime
+
+            // (b): Static Binding means that the method to be excuted is determind at compile time. it s commonly associated with method overloading.
+            //       Dynamic Binding means that eht method to be exeuted is determined at runtime ased on the actual oject type. It is commonly associated with method overriding and polymorphism.
+
+
+            //Q2 
+
+            // (a): The sealed keyword pervents a class from being inherited. A sealed class cannot be used as a base class.
+
+            // (b): A sealed class pervents other classes from inheriting from it, while a sealed method preents derived classes from overriding that specfic method.
+
+            // (c): No. A sealed method cannot be overriding by further derived classes because the sealed keyword pervents any further overriding if that method.
+
+
+            #endregion
+
+
 
         }
 
