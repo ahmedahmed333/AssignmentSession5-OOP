@@ -74,54 +74,75 @@
                     Console.WriteLine("\nShipment added successfully.\n");
                 }
             }
-                // d. Print the three shipments using the integer indexer
-                Console.WriteLine("--- All Shipments");
-                for (int n = 0; n < 3; n++)
-                {
-                    // Using integer indexer center[i]
+            // d. Print the three shipments using the integer indexer
+            Console.WriteLine("--- All Shipments");
+            for (int n = 0; n < 3; n++)
+            {
+                // Using integer indexer center[i]
 
-                    Shipment s = center[n];
+                Shipment s = center[n];
 
-                    // Print information
-                    Console.WriteLine($"Tracking Code: {s.TrackingCode}");
-                    Console.WriteLine($"Description: {s.Description}");
-                    Console.WriteLine($"Weight: {s.Weight} KG");
-                    Console.WriteLine($"Delivery Fee: {s.DeliveryFee} EGP");
-                    Console.WriteLine($"Destination: {s.Destination.GetFullAddress()}");
-                    Console.WriteLine($"Estimated Cost: {s.EstimatedCost} EGP\n");
-                }
-
-                // e & f & g. Search for shipment using the string indexer
-                Console.Write("Enter a tracking code to search: ");
-
-                string searchCode = Console.ReadLine();
-
-                Shipment searchedShipment = center[searchCode];
-
-                if (!string.IsNullOrEmpty(searchedShipment.TrackingCode))
-                {
-                    Console.WriteLine($"Shipment found: {searchedShipment.TrackingCode} - {searchedShipment.Description}\n");
-                }
-                else
-                {
-                    Console.WriteLine("Shipment not found.\n");
-                }
-
-                // h. Demonstrate DeliveryAddress struct copy behavior (Value Type Concept)
-                Console.WriteLine("--- Struct Copy Test ---");
-                DeliveryAddress originalAddress = new DeliveryAddress("Tahrir Street", "Cairo", 15);
-                DeliveryAddress copiedAddress = originalAddress;
-
-
-                copiedAddress.Street = "Makram Ebeid Street";
-                copiedAddress.BuildingNumber = 20;
-
-                Console.WriteLine($"Original Address: {originalAddress.GetFullAddress()}");
-                Console.WriteLine($"Copied Address: {copiedAddress.GetFullAddress()}");
+                // Print information
+                Console.WriteLine($"Tracking Code: {s.TrackingCode}");
+                Console.WriteLine($"Description: {s.Description}");
+                Console.WriteLine($"Weight: {s.Weight} KG");
+                Console.WriteLine($"Delivery Fee: {s.DeliveryFee} EGP");
+                Console.WriteLine($"Destination: {s.Destination.GetFullAddress()}");
+                Console.WriteLine($"Estimated Cost: {s.EstimatedCost} EGP\n");
             }
+
+            // e & f & g. Search for shipment using the string indexer
+            Console.Write("Enter a tracking code to search: ");
+
+            string searchCode = Console.ReadLine();
+
+            Shipment searchedShipment = center[searchCode];
+
+            if (!string.IsNullOrEmpty(searchedShipment.TrackingCode))
+            {
+                Console.WriteLine($"Shipment found: {searchedShipment.TrackingCode} - {searchedShipment.Description}\n");
+            }
+            else
+            {
+                Console.WriteLine("Shipment not found.\n");
+            }
+
+            // h. Demonstrate DeliveryAddress struct copy behavior (Value Type Concept)
+            Console.WriteLine("--- Struct Copy Test ---");
+            DeliveryAddress originalAddress = new DeliveryAddress("Tahrir Street", "Cairo", 15);
+            DeliveryAddress copiedAddress = originalAddress;
+
+
+            copiedAddress.Street = "Makram Ebeid Street";
+            copiedAddress.BuildingNumber = 20;
+
+            Console.WriteLine($"Original Address: {originalAddress.GetFullAddress()}");
+            Console.WriteLine($"Copied Address: {copiedAddress.GetFullAddress()}");
+        }
+
 
             #endregion
 
-        
+
+        #region Part 01 : Theoretical Questions /  Question 1
+        //(a):
+        // A class is refrance type , while a struct s a value type. classes are generally used to represent complex objects , while structs are typically used for small and smple data types.
+        // classes support inhertance and polymorphism, whreas structs do not support inheritance. 
+
+        //(b)
+
+        // Classes are more sutable for large applications becuase they are designed to represent complex objects with data and behanior.
+        // They support important OOP concepts such as inheritance, polymorphism, and encapsulation, which make the code more flexible, maintainable.
+
+        #endregion
+
+        #region Question 2
+        // a- Shipment is the parent (base) class.
+        // b- ExpressShipment is the child class
+        // c- The TrackingCode property is inherited from the Shipment class
+        // d- Inheritance is better because: 
+        //    Code Reusability  Maintainability 
+        #endregion
+
     }
 }
