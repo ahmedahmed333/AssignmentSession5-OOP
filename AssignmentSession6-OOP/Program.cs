@@ -386,8 +386,170 @@ namespace AssignmentSession6_OOP
 
 
             #endregion
+            #region Part 02 : Practical Questions / (OOP3)
+
+            //Create a Driver.
+
+            Console.Write("Enter Driver Name: ");
+            string driverName = Console.ReadLine();
+            Driver driver = new Driver(driverName);
+
+            //  b. Create a DeliveryCenter.
+            // c.Assign the Driver to the DeliveryCenter.
+
+            DeliveryCenter center = new DeliveryCenter();
+            Console.Write("Enter Center Name: ");
+            center.centerName = Console.ReadLine();
+            center.Driver = driver;
+
+            //Create one StandardShipment.
+
+            Console.WriteLine("\nEnter Standard Shipment Data:");
+            Console.Write("Tracking Code: ");
+            string stdCode = Console.ReadLine();
+            Console.Write("Description: ");
+            string stdDesc = Console.ReadLine();
+            Console.Write("Weight: ");
+            decimal stdWeight = decimal.Parse(Console.ReadLine());
+            Console.Write("Delivery Fee: ");
+            decimal stdFee = decimal.Parse(Console.ReadLine());
+            Console.Write("City: ");
+            string stdCity = Console.ReadLine();
+            Console.Write("Street: ");
+            string stdStreet = Console.ReadLine();
+            Console.Write("Building Number: ");
+            int stdBuilding = int.Parse(Console.ReadLine());
+
+            DeliveryAddress stdAddress = new DeliveryAddress
+            {
+                City = stdCity,
+                Street = stdStreet,
+                BuildingNumber = stdBuilding
+            };
+
+            StandardShipment standard = new StandardShipment(stdCode, stdDesc, stdWeight, stdFee, stdAddress);
+
+            // Create one ExpressShipment.
+            Console.WriteLine("\nEnter Express Shipment Data:");
+            Console.Write("Tracking Code: ");
+            string expCode = Console.ReadLine();
+            Console.Write("Description: ");
+            string expDesc = Console.ReadLine();
+            Console.Write("Weight: ");
+            decimal expWeight = decimal.Parse(Console.ReadLine());
+            Console.Write("Delivery Fee: ");
+            decimal expFee = decimal.Parse(Console.ReadLine());
+            Console.Write("Extra Fee: ");
+            decimal expExtraFee = decimal.Parse(Console.ReadLine());
+            Console.Write("City: ");
+            string expCity = Console.ReadLine();
+            Console.Write("Street: ");
+            string expStreet = Console.ReadLine();
+            Console.Write("Building Number: ");
+            int expBuilding = int.Parse(Console.ReadLine());
+
+            DeliveryAddress expAddress = new DeliveryAddress
+            {
+                City = expCity,
+                Street = expStreet,
+                BuildingNumber = expBuilding
+            };
+
+            ExpressShipment express = new ExpressShipment(expCode, expDesc, expWeight, expFee, expAddress, expExtraFee);
+
+            // Create one InternationalShipment.
+
+            Console.WriteLine("\nEnter International Shipment Data:");
+            Console.Write("Tracking Code: ");
+            string intCode = Console.ReadLine();
+            Console.Write("Description: ");
+            string intDesc = Console.ReadLine();
+            Console.Write("Weight: ");
+            decimal intWeight = decimal.Parse(Console.ReadLine());
+            Console.Write("Delivery Fee: ");
+            decimal intFee = decimal.Parse(Console.ReadLine());
+            Console.Write("Destination Country: ");
+            string intCountry = Console.ReadLine();
+            Console.Write("Customs Fee: ");
+            decimal intCustomsFee = decimal.Parse(Console.ReadLine());
+            Console.Write("City: ");
+            string intCity = Console.ReadLine();
+            Console.Write("Street: ");
+            string intStreet = Console.ReadLine();
+            Console.Write("Building Number: ");
+            int intBuilding = int.Parse(Console.ReadLine());
+
+            DeliveryAddress intAddress = new DeliveryAddress
+            {
+                City = intCity,
+                Street = intStreet,
+                BuildingNumber = intBuilding
+            };
+
+            InternationalShipment international = new InternationalShipment(intCode, intDesc, intWeight, intFee, intAddress, intCountry, intCustomsFee);
+
+            // g. Add all shipments to the DeliveryCenter.
+
+            center.AddShipment(standard);
+            Console.WriteLine("\nShipment Added Successfully.");
+            center.AddShipment(express);
+            Console.WriteLine("Shipment Added Successfully.");
+            center.AddShipment(international);
+            Console.WriteLine("Shipment Added Successfully.\n");
 
 
+            //h. Print all shipments using PrintAllShipments().
+            center.PrintAllShipments();
+
+            // Call DeliveryHelper.PrintShipmentDetails() for each shipment.
+            Console.WriteLine("=============================================");
+            Console.WriteLine("Printing Using DeliveryHelper...\n");
+
+            DeliveryHelper.PrintShipmentDeails(standard);
+            Console.WriteLine("Standard Shipment Printed Successfully.\n");
+
+            DeliveryHelper.PrintShipmentDeails(express);
+            Console.WriteLine("Express Shipment Printed Successfully.\n");
+
+            DeliveryHelper.PrintShipmentDeails(international);
+            Console.WriteLine("International Shipment Printed Successfully.");
+
+            // j. Demonstrate both versions of UpdateWeight().
+
+            Console.WriteLine("=============================================");
+            Console.WriteLine("Updating Weight...\n");
+
+            Console.WriteLine($"Original Weight : {standard.Weight} KG\n");
+
+            Console.Write("Enter New Weight for Standard Shipment: ");
+            decimal newWeight = decimal.Parse(Console.ReadLine());
+            standard.UpdateWeight(newWeight);
+            Console.WriteLine($"Updated Weight : {standard.Weight} KG\n");
+
+            Console.Write("Enter Extra Packing Weight: ");
+            decimal extraPacking = decimal.Parse(Console.ReadLine());
+            standard.UpdateWeight(newWeight, extraPacking);
+            Console.WriteLine($"Updated Weight After Packing : {standard.Weight} KG");
+
+            // Build a Shipment[] holding mixed types and print all of them in a loop.
+
+            Console.WriteLine("=============================================");
+            Console.WriteLine("Printing Using Shipment[]...\n");
+
+            Shipment[] shipmentsArray = new Shipment[] { standard, express, international };
+
+            foreach (var shipment in shipmentsArray)
+            {
+                if (shipment is StandardShipment)
+                    Console.WriteLine("Standard Shipment...\n");
+                else if (shipment is ExpressShipment)
+                    Console.WriteLine("Express Shipment...\n");
+                else if (shipment is InternationalShipment)
+                    Console.WriteLine("International Shipment...\n");
+            }
+
+            Console.WriteLine("=============================================");
+            #endregion
 
         }
 

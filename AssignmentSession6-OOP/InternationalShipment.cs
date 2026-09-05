@@ -72,5 +72,11 @@ namespace AssignmentSession6_OOP
             Console.WriteLine($"Customs Fee        : {CustomsFee} EGP");
             Console.WriteLine($"Estimated Cost     : {EstimatedCost} EGP");
         }
+
+        public virtual void GenerateCustomsReport()
+        {
+            Console.WriteLine($"Customs Report for {DestinationCountry}");
+            Console.WriteLine($"Customs Fee: {CustomsFee} EGP");
+        }
     }
 }

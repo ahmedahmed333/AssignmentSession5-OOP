@@ -27,7 +27,15 @@ namespace AssignmentSession6_OOP
             DeliveryFee = deliveryFee;
             Destination = destination;
         }
-
+        //  add two versions of the weight-update method
+        public void UpdateWeight(decimal newWeight)
+        {
+            Weight = newWeight;
+        }
+        public void UpdateWeight(decimal newWeight, decimal extraPackingWeight)
+        {
+            Weight = newWeight + extraPackingWeight;
+        }
         // proporties
         public string TrackingCode
         {
@@ -92,7 +100,7 @@ namespace AssignmentSession6_OOP
             }
         }
         public DeliveryAddress Destination { get; set; }
-        public virtual decimal  EstimatedCost
+        public virtual decimal EstimatedCost
         {
             get
             {

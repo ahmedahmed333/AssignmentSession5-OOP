@@ -7,7 +7,7 @@ namespace AssignmentSession6_OOP
     public class DeliveryCenter
     {
         private Shipment[] shipments = new Shipment[20];
-
+        public Driver? Driver { get; set; }
         public string centerName;
 
         private int count = 0;
