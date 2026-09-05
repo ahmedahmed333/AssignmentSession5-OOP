@@ -1,12 +1,13 @@
-﻿using System;
+﻿using AssignmentSession6_OOP.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace AssignmentSession6_OOP
+namespace AssignmentSession6_OOP.shipments
 {
 
-    internal class InternationalShipment : Shipment
+    internal class InternationalShipment : Shipment, ITrackable, IInsurable
     {
         public string destinationCountry;
         public decimal customsFee;
@@ -77,6 +78,16 @@ namespace AssignmentSession6_OOP
         {
             Console.WriteLine($"Customs Report for {DestinationCountry}");
             Console.WriteLine($"Customs Fee: {CustomsFee} EGP");
+        }
+
+        public string GetTrackingStatus()
+        {
+            return $"Shipment {TrackingCode} has been Delivered.";
+        }
+
+        public decimal CalculateInsurance()
+        {
+            return EstimatedCost * 0.12m;
         }
     }
 }

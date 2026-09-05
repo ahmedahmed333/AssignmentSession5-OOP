@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AssignmentSession6_OOP.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -55,6 +56,14 @@ namespace AssignmentSession6_OOP
                 }
             }
         }
+        public void PrintTrackingStatuses()
+        {
+            for (int i = 0; i < count; i++)
+                if (shipments[i] is ITrackable trackable)
+                {
+                    Console.WriteLine(trackable.GetTrackingStatus());
+                }
+        }
         public Shipment this[int index]
         {
             get
@@ -87,5 +96,6 @@ namespace AssignmentSession6_OOP
                 return default;
             }
         }
+
     }
 }

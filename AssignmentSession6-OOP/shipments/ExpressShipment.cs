@@ -1,10 +1,11 @@
-﻿using System;
+﻿using AssignmentSession6_OOP.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AssignmentSession6_OOP
+namespace AssignmentSession6_OOP.shipments
 {
-    internal class ExpressShipment : Shipment
+    internal class ExpressShipment : Shipment, ITrackable, IInsurable
     {
         public decimal extraFee;
 
@@ -35,6 +36,17 @@ namespace AssignmentSession6_OOP
                 return DeliveryFee + (Weight * 5) + ExtraFee;
             }
         }
+
+        public decimal CalculateInsurance()
+        {
+            return EstimatedCost * 0.08m;
+        }
+
+        public string GetTrackingStatus()
+        {
+            return $"Shipment {TrackingCode} is Out for Delivery.";
+        }
+
         public override void PrintShipment()
         {
             Console.WriteLine("Express Shipment\n");

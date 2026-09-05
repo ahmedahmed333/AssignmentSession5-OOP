@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AssignmentSession6_OOP
 {
-    public class Shipment
+    public abstract class Shipment
     {
         private string trackingCode;
         private string description;
@@ -100,14 +100,7 @@ namespace AssignmentSession6_OOP
             }
         }
         public DeliveryAddress Destination { get; set; }
-        public virtual decimal EstimatedCost
-        {
-            get
-            {
-
-                return DeliveryFee + (Weight * 5);
-            }
-        }
+        public abstract decimal EstimatedCost { get; }
 
         // methods
         public void UpdateDeliveryFee(decimal newFee)
@@ -117,15 +110,8 @@ namespace AssignmentSession6_OOP
                 DeliveryFee = newFee;
             }
         }
-        public virtual void PrintShipment()
-        {
-            Console.WriteLine($"Tracking Code: {TrackingCode}");
-            Console.WriteLine($"Description:   {Description}");
-            Console.WriteLine($"Weight:        {Weight}");
-            Console.WriteLine($"Delivery Fee:  {DeliveryFee}");
-            Console.WriteLine($"Destination:   {Destination.GetFullAddress()}");
-            Console.WriteLine($"Total Cost:    {EstimatedCost}");
-        }
+        public abstract void PrintShipment();
+      
 
     }
 }

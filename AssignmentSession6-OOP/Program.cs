@@ -1,4 +1,6 @@
-﻿using System.Xml.Linq;
+﻿using AssignmentSession6_OOP.interfaces;
+using AssignmentSession6_OOP.shipments;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AssignmentSession6_OOP
@@ -552,7 +554,7 @@ namespace AssignmentSession6_OOP
             #endregion
 
 
-            #region
+
 
             #region Part 01 : Theoretical Questions /  Question 1 (Abstraction) (OOP4)
 
@@ -581,11 +583,119 @@ namespace AssignmentSession6_OOP
             // i would choose an interface when i want to define a cntract or commaon behavior that can be implemented by unrelated classes, especially when a class needs to implement multiple behaviors.
 
             // c) Can a class inherit from multiple abstract classes? Can it implement multiple interfaces?
-
             //No, a class cannot inherit from multiple abstract classes because C# does not support multiple class inheritance. However, a class can implement multiple interfaces.
 
             #endregion
 
+
+            #region Part 02 : Practical Questions (Abstraction) (OOP4)
+
+            DeliveryCenter center = new DeliveryCenter();
+            Console.Write("Enter Center Name: ");
+            center.centerName = Console.ReadLine();
+
+            //a. Create one StandardShipment.
+
+            Console.WriteLine("\n--- Enter Standard Shipment Data ---");
+            Console.Write("Tracking Code: ");
+            string stdCode = Console.ReadLine();
+            Console.Write("Description: ");
+            string stdDesc = Console.ReadLine();
+            Console.Write("Weight: ");
+            decimal stdWeight = decimal.Parse(Console.ReadLine());
+            Console.Write("Delivery Fee: ");
+            decimal stdFee = decimal.Parse(Console.ReadLine());
+
+            Console.Write("City: ");
+            string stdCity = Console.ReadLine();
+            Console.Write("Street: ");
+            string stdStreet = Console.ReadLine();
+            Console.Write("Building Number: ");
+            int stdBuilding = int.Parse(Console.ReadLine());
+
+            DeliveryAddress stdAddress = new DeliveryAddress { City = stdCity, Street = stdStreet, BuildingNumber = stdBuilding };
+            StandardShipment standard = new StandardShipment(stdCode, stdDesc, stdWeight, stdFee, stdAddress);
+
+
+            //b. Create one ExpressShipment.
+
+            Console.WriteLine("\n--- Enter Express Shipment Data ---");
+            Console.Write("Tracking Code: ");
+            string expCode = Console.ReadLine();
+            Console.Write("Description: ");
+            string expDesc = Console.ReadLine();
+            Console.Write("Weight: ");
+            decimal expWeight = decimal.Parse(Console.ReadLine());
+            Console.Write("Delivery Fee: ");
+            decimal expFee = decimal.Parse(Console.ReadLine());
+            Console.Write("Extra Fee: ");
+            decimal expExtraFee = decimal.Parse(Console.ReadLine());
+
+            DeliveryAddress expAddress = new DeliveryAddress { City = stdCity, Street = stdStreet, BuildingNumber = stdBuilding };
+            ExpressShipment express = new ExpressShipment(expCode, expDesc, expWeight, expFee, expAddress, expExtraFee);
+
+            //c. Create one InternationalShipment.
+            Console.WriteLine("\n--- c. Enter International Shipment Data ---");
+            Console.Write("Tracking Code: ");
+            string intCode = Console.ReadLine();
+            Console.Write("Description: ");
+            string intDesc = Console.ReadLine();
+            Console.Write("Weight: ");
+            decimal intWeight = decimal.Parse(Console.ReadLine());
+            Console.Write("Delivery Fee: ");
+            decimal intFee = decimal.Parse(Console.ReadLine());
+            Console.Write("Destination Country: ");
+            string intCountry = Console.ReadLine();
+            Console.Write("Customs Fee: ");
+            decimal intCustomsFee = decimal.Parse(Console.ReadLine());
+
+            DeliveryAddress intAddress = new DeliveryAddress { City = stdCity, Street = stdStreet, BuildingNumber = stdBuilding };
+            InternationalShipment international = new InternationalShipment(intCode, intDesc, intWeight, intFee, intAddress, intCountry, intCustomsFee);
+
+
+            // d. Add all shipments to the DeliveryCenter.
+            center.AddShipment(standard);
+            center.AddShipment(express);
+            center.AddShipment(international);
+            Console.WriteLine("\nAll Shipments Added Successfully.\n");
+
+            //e. Print all shipment details.
+
+            center.PrintAllShipments();
+            Console.WriteLine();
+
+            // f & h. Store in ITrackable[] array and print tracking statuses.
+            Console.WriteLine("Tracking Status\n");
+
+            ITrackable[] trackableArray = { standard, express, international };
+            foreach (var item in trackableArray)
+            {
+                DeliveryReport.PrintShipment(item);
+                Console.WriteLine();
+            }
+            Console.WriteLine("=============================================\n");
+
+            // g & i. Store in IInsurable[] array and print insurance values.
+            Console.WriteLine("Insurance\n");
+
+            IInsurable[] insurableArray = new IInsurable[] { standard, express, international };
+
+            Console.Write("Standard Shipment Insurance : ");
+            DeliveryReport.PrintInsurance(insurableArray[0]);
+            Console.WriteLine();
+
+            Console.Write("Express Shipment Insurance : ");
+            DeliveryReport.PrintInsurance(insurableArray[1]);
+            Console.WriteLine();
+
+            Console.Write("International Shipment Insurance : ");
+            DeliveryReport.PrintInsurance(insurableArray[2]);
+            Console.WriteLine();
+
+            Console.WriteLine("=============================================\n");
+
+            Console.WriteLine("Interface Polymorphism Demonstrated Successfully.");
+            #endregion
         }
 
 
