@@ -1,5 +1,6 @@
 ﻿using AssignmentSession6_OOP.interfaces;
 using AssignmentSession6_OOP.shipments;
+using System.Net;
 using System.Reflection.Metadata;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -10,7 +11,7 @@ namespace AssignmentSession6_OOP
     {
         static void Main(string[] args)
         {
-            #region Question 01 
+            #region Question 01 OOP1
             //DeliveryAddress address1 = new DeliveryAddress();
             //address1.City = "Giza";
             //DeliveryAddress address2 = address1;
@@ -131,7 +132,7 @@ namespace AssignmentSession6_OOP
 
 
 
-            #region Part 01 : Theoretical Questions /  Question 1
+            #region Part 01 : Theoretical Questions /  Question 1 OOP2
             //(a):
             // A class is refrance type , while a struct s a value type. classes are generally used to represent complex objects , while structs are typically used for small and smple data types.
             // classes support inhertance and polymorphism, whreas structs do not support inheritance. 
@@ -150,12 +151,6 @@ namespace AssignmentSession6_OOP
             // d- Inheritance is better because: 
             //    Code Reusability  Maintainability 
             #endregion
-            #region Part 02 : Practical Questions /  Question 1
-
-
-            #endregion
-
-
 
 
             #region Part 02 : Practical Questions
@@ -785,6 +780,61 @@ namespace AssignmentSession6_OOP
 
             // No. An extension method cannot access private members of the type it extends because it is not actually a member of that class and is subject to normal access modifiers.
             #endregion
+
+            #region Part 02 : Practical Questions /  (OOP5)
+            // 1  Object Copying
+
+            DeliveryAddress address = new DeliveryAddress("giza", "moared", 12);
+            StandardShipment standard = new StandardShipment("SH001", "Laptop", 3, 50, address);
+            Shipment shipment1 = standard;
+            Shipment shipment2 = shipment1;
+            Console.WriteLine(shipment1 == shipment2); // true
+
+            // 2  Shallow Copy                                           
+            Console.WriteLine("==========Shallow Copy==========");
+            Shipment shallowCopy = shipment1.CopyShipment();
+            Console.WriteLine(shipment1 == shallowCopy); // false
+            Console.WriteLine(ReferenceEquals(shipment1.Destination, shallowCopy.Destination)); // true
+
+            shallowCopy.Destination.City = "cairo";
+
+            Console.WriteLine(shipment1.Destination.City); //cairo
+            Console.WriteLine(shallowCopy.Destination.City); //cairo
+
+            // 3  Deep Copy
+            Console.WriteLine("==========deep copy==========");
+            Shipment deepCopy = shipment1.DeepCopy();
+            Console.WriteLine(shipment1 == deepCopy); // false
+            Console.WriteLine(ReferenceEquals(shipment1.Destination, deepCopy.Destination)); // false
+
+            deepCopy.Destination.City = "giza";
+
+            Console.WriteLine(shipment1.Destination.City); //cairo 
+            Console.WriteLine(deepCopy.Destination.City); //giza 
+
+
+            // 6  Static Method
+
+            Console.WriteLine($"Total shipments created : {Shipment.GetTotalShipmentsCreated()}"); // 1
+            // 7  Static Class
+
+            DeliveryUtilities.PrintSystemTitle("Delivery Center");
+
+            // 8  Extension Methods
+
+            shipment1.TrackingStatus = "Delivered";
+
+            Console.WriteLine(shipment1.GetSummary()); // SH001 | Standard | 3 KG | Delivered
+            Console.WriteLine(shipment1.IsDelivered()); // true
+
+           
+
+
+
+
+            #endregion
+
+
 
         }
 

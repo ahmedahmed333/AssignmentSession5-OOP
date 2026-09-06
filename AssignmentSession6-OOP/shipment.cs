@@ -10,6 +10,9 @@ namespace AssignmentSession6_OOP
         private string description;
         private decimal weight;
         private decimal deliveryFee;
+
+        public static int TotalShipmentsCreated;
+
         // Constructors
         public Shipment(string trackingCode)
         {
@@ -17,7 +20,8 @@ namespace AssignmentSession6_OOP
             Description = "Unknown";
             Weight = 1;
             DeliveryFee = 50;
-            Destination = new DeliveryAddress();
+            Destination = new DeliveryAddress("c", "das", 21);
+            TotalShipmentsCreated++;
         }
         public Shipment(string trackingCode, string description, decimal weight, decimal deliveryFee, DeliveryAddress destination)
         {
@@ -26,6 +30,12 @@ namespace AssignmentSession6_OOP
             Weight = weight;
             DeliveryFee = deliveryFee;
             Destination = destination;
+            TotalShipmentsCreated++;
+        }
+        static Shipment()
+        {
+            TotalShipmentsCreated = 0;
+            Console.WriteLine("Shipment System Initialized");
         }
         //  add two versions of the weight-update method
         public void UpdateWeight(decimal newWeight)
@@ -100,6 +110,8 @@ namespace AssignmentSession6_OOP
             }
         }
         public DeliveryAddress Destination { get; set; }
+
+        public string TrackingStatus { get; set; }
         public abstract decimal EstimatedCost { get; }
 
         // methods
@@ -111,7 +123,30 @@ namespace AssignmentSession6_OOP
             }
         }
         public abstract void PrintShipment();
-      
 
+
+        public static int GetTotalShipmentsCreated()
+        {
+            return TotalShipmentsCreated;
+        }
+
+        public Shipment CopyShipment()
+        {
+            return ShallowCopy();
+        }
+
+        public Shipment ShallowCopy()
+        {
+            return (Shipment)MemberwiseClone();
+        }
+        public Shipment DeepCopy()
+        {
+            Shipment copy = (Shipment)MemberwiseClone();
+
+            copy.Destination = new DeliveryAddress(Destination.City, Destination.Street, Destination.BuildingNumber);
+
+            return copy;
+        }
     }
+
 }

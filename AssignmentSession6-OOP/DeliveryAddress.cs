@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AssignmentSession6_OOP
 {
-    public struct DeliveryAddress
+    public class DeliveryAddress
     {
         public string City;
         public string Street;
