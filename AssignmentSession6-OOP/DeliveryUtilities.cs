@@ -8,7 +8,7 @@ namespace AssignmentSession6_OOP
     {
         public static void PrintSeparator()
         {
-            Console.WriteLine("================");
+            Console.WriteLine("==========================================");
         }
         public static void PrintSystemTitle(string title)
         {

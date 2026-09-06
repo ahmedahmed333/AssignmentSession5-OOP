@@ -784,53 +784,256 @@ namespace AssignmentSession6_OOP
             #region Part 02 : Practical Questions /  (OOP5)
             // 1  Object Copying
 
-            DeliveryAddress address = new DeliveryAddress("giza", "moared", 12);
-            StandardShipment standard = new StandardShipment("SH001", "Laptop", 3, 50, address);
+            //DeliveryAddress address = new DeliveryAddress("giza", "moared", 12);
+            //StandardShipment standard = new StandardShipment("SH001", "Laptop", 3, 50, address);
+            //Shipment shipment1 = standard;
+            //Shipment shipment2 = shipment1;
+            //Console.WriteLine(shipment1 == shipment2); // true
+
+            //// 2  Shallow Copy                                           
+            //Console.WriteLine("==========Shallow Copy==========");
+            //Shipment shallowCopy = shipment1.CopyShipment();
+            //Console.WriteLine(shipment1 == shallowCopy); // false
+            //Console.WriteLine(ReferenceEquals(shipment1.Destination, shallowCopy.Destination)); // true
+
+            //shallowCopy.Destination.City = "cairo";
+
+            //Console.WriteLine(shipment1.Destination.City); //cairo
+            //Console.WriteLine(shallowCopy.Destination.City); //cairo
+
+            //// 3  Deep Copy
+            //Console.WriteLine("==========deep copy==========");
+            //Shipment deepCopy = shipment1.DeepCopy();
+            //Console.WriteLine(shipment1 == deepCopy); // false
+            //Console.WriteLine(ReferenceEquals(shipment1.Destination, deepCopy.Destination)); // false
+
+            //deepCopy.Destination.City = "giza";
+
+            //Console.WriteLine(shipment1.Destination.City); //cairo 
+            //Console.WriteLine(deepCopy.Destination.City); //giza 
+
+
+            //// 6  Static Method
+
+            //Console.WriteLine($"Total shipments created : {Shipment.GetTotalShipmentsCreated()}"); // 1
+            //// 7  Static Class
+
+            //DeliveryUtilities.PrintSystemTitle("Delivery Center");
+
+            //// 8  Extension Methods
+
+            //shipment1.TrackingStatus = "Delivered";
+
+            //Console.WriteLine(shipment1.GetSummary()); // SH001 | Standard | 3 KG | Delivered
+            //Console.WriteLine(shipment1.IsDelivered()); // true
+
+
+            // Main() Checklist
+
+            DeliveryUtilities.PrintSystemTitle("Smart Delivery Management System");
+
+            Shipment.GetTotalShipmentsCreated();
+
+            DeliveryUtilities.PrintSeparator();
+
+            Console.WriteLine("Creating Shipments...");
+            DeliveryUtilities.PrintSeparator();
+
+            Console.WriteLine();
+
+
+            DeliveryAddress address1 = new DeliveryAddress("Cairo", "Moared", 12);
+            DeliveryAddress address2 = new DeliveryAddress("Cairo", "Tahrir", 15);
+            DeliveryAddress address3 = new DeliveryAddress("Cairo", "Nasr City", 20);
+
+            StandardShipment standard = new StandardShipment(
+        "SH001",
+        "Laptop",
+        3,
+        50,
+        address1
+    );
+
+            ExpressShipment express = new ExpressShipment(
+                "SH002",
+                "Phone",
+                2,
+                50,
+                address2,
+                30
+            );
+
+            InternationalShipment international = new InternationalShipment(
+                "SH003",
+                "Monitor",
+                8,
+                50,
+                address3,
+                "USA",
+                100
+            );
+
+            Console.WriteLine("Standard Shipment Created");
+            Console.WriteLine("Express Shipment Created");
+            Console.WriteLine("International Shipment Created");
+
+            Console.WriteLine();
+
+            Console.WriteLine(
+    $"Total Shipments Created : {Shipment.GetTotalShipmentsCreated()}"
+);
+            Console.WriteLine();
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Object Copying");
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine();
+
             Shipment shipment1 = standard;
             Shipment shipment2 = shipment1;
-            Console.WriteLine(shipment1 == shipment2); // true
 
-            // 2  Shallow Copy                                           
-            Console.WriteLine("==========Shallow Copy==========");
-            Shipment shallowCopy = shipment1.CopyShipment();
-            Console.WriteLine(shipment1 == shallowCopy); // false
-            Console.WriteLine(ReferenceEquals(shipment1.Destination, shallowCopy.Destination)); // true
+            Console.WriteLine($"Original Shipment  : {shipment1.TrackingCode}");
+            Console.WriteLine($"Assigned Shipment  : {shipment2.TrackingCode}");
+            Console.WriteLine();
 
-            shallowCopy.Destination.City = "cairo";
+            Console.WriteLine($"Same Object : {shipment1 == shipment2}");
 
-            Console.WriteLine(shipment1.Destination.City); //cairo
-            Console.WriteLine(shallowCopy.Destination.City); //cairo
+            Console.WriteLine();
 
-            // 3  Deep Copy
-            Console.WriteLine("==========deep copy==========");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("Shallow Copy");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine();
+
+            shipment1.Destination.City = "Cairo";
+
+            Shipment shallowCopy = shipment1.ShallowCopy();
+
+            Console.WriteLine(
+                $"Original Shipment Address : {shipment1.Destination.City}"  // Cairo
+            );
+
+            Console.WriteLine(
+                $"Copied Shipment Address   : {shallowCopy.Destination.City}" // Cairo
+            );
+
+            Console.WriteLine();
+
+            Console.WriteLine("Changing copied shipment address...");
+            Console.WriteLine();
+
+            shallowCopy.Destination.City = "Giza";
+
+            Console.WriteLine(
+                $"Original Shipment Address : {shipment1.Destination.City}"
+            );
+
+            Console.WriteLine(
+                $"Copied Shipment Address   : {shallowCopy.Destination.City}"
+            );
+
+            Console.WriteLine();
+
+            Console.WriteLine(
+    $"Same DeliveryAddress Object : {ReferenceEquals(shipment1.Destination, shallowCopy.Destination)}"
+); // true
+
+            Console.WriteLine();
+
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("Deep Copy");
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine();
+
+
+            shipment1.Destination.City = "Cairo";
+
             Shipment deepCopy = shipment1.DeepCopy();
-            Console.WriteLine(shipment1 == deepCopy); // false
-            Console.WriteLine(ReferenceEquals(shipment1.Destination, deepCopy.Destination)); // false
 
-            deepCopy.Destination.City = "giza";
+            Console.WriteLine(
+                $"Original Shipment Address : {shipment1.Destination.City}"
+            );
 
-            Console.WriteLine(shipment1.Destination.City); //cairo 
-            Console.WriteLine(deepCopy.Destination.City); //giza 
+            Console.WriteLine(
+                $"Copied Shipment Address   : {deepCopy.Destination.City}"
+            );
+
+            Console.WriteLine();
+            Console.WriteLine("Changing copied shipment address...");
+            Console.WriteLine();
+
+            deepCopy.Destination.City = "Giza";
+
+            Console.WriteLine(
+                $"Original Shipment Address : {shipment1.Destination.City}"
+            );
+
+            Console.WriteLine(
+                $"Copied Shipment Address   : {deepCopy.Destination.City}"
+            );
+
+            Console.WriteLine();
+
+            Console.WriteLine(
+       $"Same DeliveryAddress Object : {ReferenceEquals(shipment1.Destination, deepCopy.Destination)}"
+   );
+
+            Console.WriteLine();
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Extension Methods");
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine();
 
 
-            // 6  Static Method
+            standard.TrackingStatus = "In Transit";
+            express.TrackingStatus = "Out For Delivery";
+            international.TrackingStatus = "Delivered";
 
-            Console.WriteLine($"Total shipments created : {Shipment.GetTotalShipmentsCreated()}"); // 1
-            // 7  Static Class
+            Console.WriteLine(standard.GetSummary());
+            Console.WriteLine(express.GetSummary());
+            Console.WriteLine(international.GetSummary());
+            Console.WriteLine();
 
-            DeliveryUtilities.PrintSystemTitle("Delivery Center");
+            Console.WriteLine($"SH001 Is Delivered : {standard.IsDelivered()}");
+            Console.WriteLine($"SH003 Is Delivered : {international.IsDelivered()}");
 
-            // 8  Extension Methods
+            Console.WriteLine();
 
-            shipment1.TrackingStatus = "Delivered";
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Tracking Status");
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine();
 
-            Console.WriteLine(shipment1.GetSummary()); // SH001 | Standard | 3 KG | Delivered
-            Console.WriteLine(shipment1.IsDelivered()); // true
-
-           
+            Console.WriteLine("Tracking status changed to: Out For Delivery");
 
 
 
+            Console.WriteLine();
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Static Utilities");
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine();
+
+            Console.WriteLine(
+      $"Total Shipments Created : {Shipment.GetTotalShipmentsCreated()}"
+  );
+
+            Console.WriteLine();
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Partial Method");
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine();
+
+            Console.WriteLine("Tracking status changed to: Delivered");
+
+            Console.WriteLine();
+
+            DeliveryUtilities.PrintSeparator();
+            Console.WriteLine("Assignment Completed");
+            DeliveryUtilities.PrintSeparator();
 
             #endregion
 
